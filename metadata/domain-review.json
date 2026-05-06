@@ -1,0 +1,73 @@
+{
+  "repo": "vista-plat-secret-hub",
+  "language": "Java",
+  "category": "Platform engineering",
+  "goal": "Package a Java local lab for secret analysis with fixture event logs, golden state snapshots, and documented operating limits.",
+  "review_model": {
+    "terms": [
+      "rollout width",
+      "quota pressure",
+      "route drift",
+      "secret scope"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "rollout width",
+      "signal": 56,
+      "slack": 37,
+      "drag": 31,
+      "confidence": 60,
+      "score": 116,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "quota pressure",
+      "signal": 65,
+      "slack": 42,
+      "drag": 14,
+      "confidence": 86,
+      "score": 216,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "route drift",
+      "signal": 53,
+      "slack": 21,
+      "drag": 30,
+      "confidence": 67,
+      "score": 104,
+      "lane": "hold"
+    },
+    {
+      "name": "recovery",
+      "focus": "secret scope",
+      "signal": 49,
+      "slack": 33,
+      "drag": 21,
+      "confidence": 50,
+      "score": 118,
+      "lane": "watch"
+    },
+    {
+      "name": "stale",
+      "focus": "rollout width",
+      "signal": 82,
+      "slack": 36,
+      "drag": 18,
+      "confidence": 71,
+      "score": 217,
+      "lane": "ship"
+    }
+  ]
+}
